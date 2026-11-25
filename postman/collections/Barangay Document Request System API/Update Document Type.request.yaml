@@ -1,0 +1,19 @@
+$kind: http-request
+url: http://localhost:3000/document-types/3
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \    \"DocumentName\": \"Barangay Residency Certificate\",\r
+
+    \    \"Description\": \"Updated certificate description\",\r
+
+    \    \"Fee\": 75\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_0u1b}}"
+order: 15000

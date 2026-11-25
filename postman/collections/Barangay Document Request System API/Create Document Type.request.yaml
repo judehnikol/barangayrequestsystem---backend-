@@ -1,0 +1,19 @@
+$kind: http-request
+url: http://localhost:3000/document-types
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"DocumentName\": \"Barangay Residency Certificate\",\r
+
+    \    \"Description\": \"Certificate for residency verification\",\r
+
+    \    \"Fee\": 50\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_0u1b}}"
+order: 14000

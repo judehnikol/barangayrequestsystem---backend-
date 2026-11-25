@@ -12,10 +12,12 @@ import {
 } from '@nestjs/common';
 
 import { ResidentsService } from './residents.service.js';
-import { Resident } from './resident.entity.js';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard.js';
 import { Roles } from '../common/roles.decorator.js';
 import { RolesGuard } from '../common/roles.guard.js';
+
+import { CreateResidentDto } from './dto/create-resident.dto.js';
+import { UpdateResidentDto } from './dto/update-resident.dto.js';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles('Admin', 'Staff')
@@ -26,7 +28,7 @@ export class ResidentsController {
   ) {}
 
   @Post()
-  create(@Body() residentData: Partial<Resident>) {
+  create(@Body() residentData: CreateResidentDto) {
     return this.residentsService.create(residentData);
   }
 
@@ -43,7 +45,7 @@ export class ResidentsController {
   @Put(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
-    @Body() residentData: Partial<Resident>,
+    @Body() residentData: UpdateResidentDto,
   ) {
     return this.residentsService.update(id, residentData);
   }

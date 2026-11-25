@@ -1,0 +1,31 @@
+$kind: http-request
+url: http://localhost:3000/document-requests
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"Resident\": {\r
+
+    \        \"residentID\": 1\r
+
+    \    },\r
+
+    \    \"DocumentType\": {\r
+
+    \        \"DocumentTypeID\": 1\r
+
+    \    },\r
+
+    \    \"RequestDate\": \"2026-11-25T22:00:00\",\r
+
+    \    \"Purpose\": \"School requirement\",\r
+
+    \    \"Status\": \"Pending\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_0u1b}}"
+order: 19000

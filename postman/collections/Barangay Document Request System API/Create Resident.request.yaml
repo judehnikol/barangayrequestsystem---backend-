@@ -1,0 +1,25 @@
+$kind: http-request
+url: http://localhost:3000/residents
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"firstName\": \"Pedro\",\r
+
+    \    \"lastName\": \"Reyes\",\r
+
+    \    \"birthDate\": \"2003-06-15\",\r
+
+    \    \"address\": \"Imus, Cavite\",\r
+
+    \    \"contactNumber\": \"09171234567\",\r
+
+    \    \"email\": \"pedro@example.com\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_0u1b}}"
+order: 4000

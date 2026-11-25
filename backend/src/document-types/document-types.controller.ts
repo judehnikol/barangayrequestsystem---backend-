@@ -12,10 +12,12 @@ import {
 } from '@nestjs/common';
 
 import { DocumentTypesService } from './document-types.service.js';
-import { DocumentType } from './document-type.entity.js';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard.js';
 import { Roles } from '../common/roles.decorator.js';
 import { RolesGuard } from '../common/roles.guard.js';
+
+import { CreateDocumentTypeDto } from './dto/create-document-type.dto.js';
+import { UpdateDocumentTypeDto } from './dto/update-document-type.dto.js';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles('Admin')
@@ -26,7 +28,7 @@ export class DocumentTypesController {
   ) {}
 
   @Post()
-  create(@Body() data: Partial<DocumentType>) {
+  create(@Body() data: CreateDocumentTypeDto) {
     return this.documentTypesService.create(data);
   }
 
@@ -43,7 +45,7 @@ export class DocumentTypesController {
   @Put(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
-    @Body() data: Partial<DocumentType>,
+    @Body() data: UpdateDocumentTypeDto,
   ) {
     return this.documentTypesService.update(id, data);
   }

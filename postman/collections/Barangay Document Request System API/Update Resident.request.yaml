@@ -1,0 +1,25 @@
+$kind: http-request
+url: http://localhost:3000/residents/1
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \    \"firstName\": \"Juan\",\r
+
+    \    \"lastName\": \"Dela Cruz\",\r
+
+    \    \"birthDate\": \"2000-01-15\",\r
+
+    \    \"address\": \"San Isidro II, Dasma, Cavite\",\r
+
+    \    \"contactNumber\": \"09171234567\",\r
+
+    \    \"email\": \"juan@example.com\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_0u1b}}"
+order: 5000

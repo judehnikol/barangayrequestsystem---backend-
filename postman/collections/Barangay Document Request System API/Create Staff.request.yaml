@@ -1,0 +1,23 @@
+$kind: http-request
+url: http://localhost:3000/staff
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"FirstName\": \"Pedro\",\r
+
+    \    \"LastName\": \"Reyes\",\r
+
+    \    \"Username\": \"pedro_reyes_test\",\r
+
+    \    \"Password\": \"test123\",\r
+
+    \    \"Role\": \"Staff\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_0u1b}}"
+order: 9000

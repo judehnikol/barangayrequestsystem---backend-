@@ -12,10 +12,12 @@ import {
 } from '@nestjs/common';
 
 import { DocumentRequestsService } from './document-requests.service.js';
-import { DocumentRequest } from './document-request.entity.js';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard.js';
 import { Roles } from '../common/roles.decorator.js';
 import { RolesGuard } from '../common/roles.guard.js';
+
+import { CreateDocumentRequestDto } from './dto/create-document-request.dto.js';
+import { UpdateDocumentRequestDto } from './dto/update-document-request.dto.js';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles('Admin', 'Staff')
@@ -26,7 +28,7 @@ export class DocumentRequestsController {
   ) {}
 
   @Post()
-  create(@Body() data: Partial<DocumentRequest>) {
+  create(@Body() data: CreateDocumentRequestDto) {
     return this.documentRequestsService.create(data);
   }
 
@@ -43,7 +45,7 @@ export class DocumentRequestsController {
   @Put(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
-    @Body() data: Partial<DocumentRequest>,
+    @Body() data: UpdateDocumentRequestDto,
   ) {
     return this.documentRequestsService.update(id, data);
   }
