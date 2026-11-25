@@ -12,10 +12,12 @@ import {
 } from '@nestjs/common';
 
 import { StaffService } from './staff.service.js';
-import { Staff } from './staff.entity.js';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard.js';
 import { Roles } from '../common/roles.decorator.js';
 import { RolesGuard } from '../common/roles.guard.js';
+
+import { CreateStaffDto } from './dto/create-staff.dto.js';
+import { UpdateStaffDto } from './dto/update-staff.dto.js';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles('Admin')
@@ -26,7 +28,7 @@ export class StaffController {
   ) {}
 
   @Post()
-  create(@Body() staffData: Partial<Staff>) {
+  create(@Body() staffData: CreateStaffDto) {
     return this.staffService.create(staffData);
   }
 
@@ -43,7 +45,7 @@ export class StaffController {
   @Put(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
-    @Body() staffData: Partial<Staff>,
+    @Body() staffData: UpdateStaffDto,
   ) {
     return this.staffService.update(id, staffData);
   }
